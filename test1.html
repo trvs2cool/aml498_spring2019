@@ -1,1 +1,326 @@
-Test
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Spring 2019 CS498AML - Applied Machine Learning</title>
+	<link href="/cs498aml/sp2019/index.css" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+</head>
+<body data-gramm="true" data-gramm_editor="true" data-gramm_id="885726ee-11fe-c3e2-c9d7-8b0fba859ecc" data-spy="scroll" data-target="#toc">
+<div class="container">
+<div class="row">
+<h1>Homework 1: Classification With Naive Bayes</h1>
+</div>
+
+<div class="col-sm-2">
+<nav data-spy="affix" data-toggle="toc" id="toc">&nbsp;</nav>
+</div>
+
+<div class="col-sm-10">
+<h3>About</h3>
+
+<h4>Due</h4>
+
+<p>Monday 1/28/19, 11:59 PM CST (AML)</p>
+
+<p>Thursday 1/31/19, 11:59 PM CST (AMO*)&nbsp;</p>
+
+<p>* AMO students are allowed a 3-day extension due to the late release of the AMO Coursera materials.&nbsp; (<span style="color:#800080">Updated on 1/18</span>)</p>
+
+<h4>Goal</h4>
+
+<p>This homework focuses on classification using simple naive Bayes and decision forest&nbsp;classifiers.&nbsp;</p>
+
+<p>Additionally, it is intended to provide practice with finding and using publicly available libraries, an essential skill when applying machine learning techniques.</p>
+
+<h4>Submission</h4>
+
+<p>Submission will be through <a href="https://www.gradescope.com">gradescope</a>:</p>
+
+<p>1. Login to gradescope with your UI email, click &quot;Enroll in Course&quot; on right bottom&nbsp;with the entry code mailed to you.</p>
+
+<p>2. Choose the course, and in the dashboard page, click HW1.</p>
+
+<p>3. Then&nbsp;click &quot;Upload Submission&quot; on right bottom. It&#39;s allowed for multiple submissions before the due date.</p>
+
+<p>4. AMO students are granted for 3 days extension so late submissions before 1/31 are allowed. (Write CS498 AMO on the first page for clarity)</p>
+
+<h4>Code and External Libraries</h4>
+
+<p>The assignment can be done using any programming language.&nbsp; Python is recommended.</p>
+
+<p>External libraries can be used for all part of the assignment except where specifically mentioned below.</p>
+
+<h2>Problems</h2>
+
+<h4>Total points: 100</h4>
+
+<h3 data-toc-text="Diabetes Classification">Problem 1: Diabetes Classification</h3>
+
+<h4>Points: 40</h4>
+
+<p>A famous collection of data on whether a patient has diabetes, known as the Pima Indians dataset, and originally owned by the National Institute of Diabetes and Digestive and Kidney Diseases can be found at Kaggle. Download this dataset from&nbsp;<a href="https://www.kaggle.com/kumargh/pimaindiansdiabetescsv">https://www.kaggle.com/kumargh/pimaindiansdiabetescsv</a>. This data has a set of attributes of patients, and a categorical variable telling whether the patient is diabetic or not. For several attributes in this data set, a value of 0 may indicate a missing value of the variable. There are a total of 767 data-points.</p>
+
+<h4>Part 1A&nbsp;</h4>
+
+<p>Build a simple naive Bayes classifier to classify this data set. You should use a normal distribution to model each of the class-conditional distributions.</p>
+
+<ul>
+	<li>Compute an estimate of the accuracy of the classifier by averaging over 10 test-train splits. Each split should randomly assign 20% of the data to test, and the rest to train.</li>
+</ul>
+
+<p><u>You should write this classifier and the test-train split code yourself</u>&nbsp;(it&#39;s quite straight-forward).&nbsp; Libraries can be used to load &amp; hold the data.</p>
+
+<h4>Part 1B</h4>
+
+<p>Now adjust your code so that, for attribute 3 (Diastolic blood pressure), attribute 4 (Triceps skinfold thickness), attribute 6 (Body mass index), and attribute 8 (Age), it regards a value of 0 as a missing value when estimating the class-conditional distributions, and the posterior.&nbsp;</p>
+
+<ul>
+	<li>Compute an estimate of the accuracy of the classifier by averaging over 10 test-train splits.</li>
+</ul>
+
+<h3 data-toc-text="MNIST Image Classification">Problem 2: MNIST Image Classification</h3>
+
+<h4>Points: 60</h4>
+
+<p>The MNIST dataset is a dataset of 60,000 training and 10,000 test examples of handwritten digits, originally constructed by Yann Lecun, Corinna Cortes, and Christopher J.C. Burges. It is very widely used to check simple methods. There are 10 classes in total (&quot;0&quot; to &quot;9&quot;). This dataset has been extensively studied, and there is a history of methods and feature constructions at&nbsp;<a href="https://en.wikipedia.org/wiki/MNIST_database">https://en.wikipedia.org/wiki/MNIST_database&nbsp;</a>and at the original site,&nbsp;<a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a>. You should notice that the best methods perform extremely well.</p>
+
+<p>(<span style="color:#800080">Updated 1/19</span>) The&nbsp;<a data-auth="NotApplicable" href="http://yann.lecun.com/exdb/mnist/" rel="noopener noreferrer" target="_blank">http://yann.lecun.com/exdb/mnist/</a>&nbsp;dataset is stored in an unusual format, described in detail on the page.&nbsp; You do not have to write your own reader.&nbsp; A web search should yield solutions for both Python and R.&nbsp; For Python,&nbsp;<a href="https://pypi.org/project/python-mnist/">https://pypi.org/project/python-mnist/</a>&nbsp;should work.&nbsp; For R,&nbsp;there is reader code available at <a data-auth="NotApplicable" href="https://stackoverflow.com/questions/21521571/how-to-read-mnist-database-in-r" rel="noopener noreferrer" target="_blank">https://stackoverflow.com/questions/21521571/how-to-read-mnist-database-in-r</a>. Please note that if you follow the recommendations in the accepted answer there at <a data-auth="NotApplicable" href="https://stackoverflow.com/a/21524980" rel="noopener noreferrer" target="_blank">https://stackoverflow.com/a/21524980</a>, you must also provide the readBin call with the flag&nbsp;signed=FALSE&nbsp;since the data values are stored as unsigned integers.</p>
+
+<p>The dataset consists of 28 x 28 images. These were originally binary images, but appear to be grey level images as a result of some anti-aliasing. I will ignore mid-grey pixels (there aren&#39;t many of them) and call dark pixels &quot;ink pixels&quot;, and light pixels &quot;paper pixels&quot;; you can modify the data values with a threshold to specify the distinction, as described here&nbsp;<a href="https://en.wikipedia.org/wiki/Thresholding_(image_processing)">https://en.wikipedia.org/wiki/Thresholding_(image_processing)</a>. The digit has been centered in the image by centering the center of gravity of the image pixels, but as mentioned on the original site, this is probably not ideal. Here are some options for re-centering the digits that I will refer to in the exercises.</p>
+
+<ul>
+	<li>Untouched: Do not re-center the digits, but use the images as is.</li>
+	<li>Bounding box: Construct a 20 x 20 bounding box so that the horizontal (resp. vertical) range of ink pixels is centered in the box.</li>
+	<li>Stretched bounding box: Construct a 20 x 20 bounding box so that the horizontal (resp. vertical) range of ink pixels runs the full horizontal (resp. vertical) range of the box. Obtaining this representation will involve rescaling image pixels: you find the horizontal and vertical ink range, cut that out of the original image, then resize the result to 20 x 20. Once the image has been re-centered, you can compute features.</li>
+	<li>Here are some pictures, which may help</li>
+</ul>
+<img alt="bounding box" src="bounding_v2.png" />
+<h4>Part 2A:&nbsp;MNIST using naive Bayes</h4>
+
+<p>Model each class of the dataset using a Normal distribution and (separately) a&nbsp;Bernoulli distribution for both untouched images v. stretched bounding boxes, using&nbsp;20 x 20 for your bounding box dimension.&nbsp; This should result in 4 total models.&nbsp; Use the training set to calculate the distribution parameters.</p>
+
+<p>You must write the naive Bayes prediction code.&nbsp; The distribution parameters can be calculated manually or via libraries.&nbsp; Additionally, we recommend using a library to load the MNIST data (e.g.&nbsp;python-mnist or scikit-learn) and to rescale the images (e.g. openCV).</p>
+
+<ul>
+	<li>Compute the accuracy values for the four combinations of Normal&nbsp;v. Bernoulli distributions for both&nbsp;untouched images v. stretched bounding boxes.&nbsp; Both the training and test set accuracy will be reported.</li>
+	<li>For each digit, plot the mean pixel values calculated for the Normal distribution of the untouched images.&nbsp; In Python, a library such as&nbsp;matplotlib should prove useful.</li>
+</ul>
+
+<h4>Part 2B:&nbsp;MNIST using Decision Forest</h4>
+
+<ul>
+	<li>Classify MNIST using a decision forest.</li>
+</ul>
+
+<p>For your forest construction, you should investigate four cases. Your cases are: number of trees = (10, 30) X maximum depth = (4, 16). You should compute your accuracy for each of the following cases: untouched raw pixels; stretched bounding box. This yields a total of 8 slightly different classifiers. Please use 20 x 20 for your bounding box dimensions.</p>
+
+<p>You should use a decision forest library.&nbsp; No need to write your own.</p>
+
+<h2>Submission</h2>
+
+<p>Your submission should be a PDF with the following pages.</p>
+
+<h3>Page 1&nbsp;</h3>
+
+<h4>Part 1 Accuracies (10 points)</h4>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+	<thead>
+		<tr>
+			<th scope="col" style="text-align: left;">Setup</th>
+			<th scope="col">Cross-validation Accuracy</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Unprocessed data</td>
+			<td style="text-align: center;">???</td>
+		</tr>
+		<tr>
+			<td>0-value elements ignored</td>
+			<td style="text-align: center;">???</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Page 2</h3>
+
+<h4>Part 1 Code Snippets (30 points)</h4>
+
+<p>The page should contain snippets of code demonstrating:</p>
+
+<ol>
+	<li>Calculation of distribution parameters</li>
+	<li>Calculation of naive Bayes predictions</li>
+	<li>Test-train split code</li>
+</ol>
+
+<p>This should be a maximum of one page.&nbsp; If additional space is needed, please reference the full code you will attach to the end of the submission.</p>
+
+<h3>Page 3</h3>
+
+<h4>Part 2 MNIST Accuracies (20 points)</h4>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<thead>
+		<tr>
+			<th scope="col">x</th>
+			<th scope="col">Method</th>
+			<th scope="col">Training Set Accuracy</th>
+			<th scope="col">Test Set Accuracy</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Gaussian + untouched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Gaussian + stretched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Bernoulli + untouched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Bernoulli + stretched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>10 trees + 4 depth + untouched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>10 trees + 4 depth + stretched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>10 trees + 16 depth + untouched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>10 trees + 16 depth + stretched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>30 trees + 4 depth + untouched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>30 trees + 4 depth + stretched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>11</td>
+			<td>30 trees + 16 depth + untouched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>12</td>
+			<td>30 trees + 16 depth + stretched</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Page 4</h3>
+
+<h4>Part 2A Digit Images (10 points)</h4>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<thead>
+		<tr>
+			<th scope="col" style="text-align: left;">Digit</th>
+			<th scope="col">Mean Image</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>???</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>???</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Page 5</h3>
+
+<h4>Part 2 Code (30 points)</h4>
+
+<p>The page should contain snippets of code demonstrating:</p>
+
+<ul>
+	<li>Calculation of the Normal distribution parameters</li>
+	<li>Calculation of the&nbsp;Bernoulli&nbsp;distribution parameters</li>
+	<li>Calculation of the Naive Bayes predictions</li>
+	<li>Training of a decision tree</li>
+	<li>Calculation of a decision tree predictions</li>
+</ul>
+
+<p>This should be a maximum of one page.&nbsp; If additional space is needed, please reference the full code you will attach to the end of the submission.</p>
+
+<h3>Page 6+</h3>
+
+<p>All code should be attached at the end of the pdf.&nbsp; There is no limit to the number of pages required for full code printout.</p>
+</div>
+</div>
+</body>
+</html>
